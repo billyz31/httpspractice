@@ -27,8 +27,9 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - "80:80"
+    # 端口映射由Coolify的Traefik反向代理处理
+    # ports:
+    #   - "80:80"
     depends_on:
       - backend
     restart: unless-stopped
@@ -41,20 +42,21 @@ services:
       - app-network
 
   # 反向代理（用于本地HTTPS测试，可选）
-  nginx-proxy:
-    image: nginx:alpine
-    ports:
-      - "8080:80"
-      - "8443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./ssl:/etc/ssl/certs:ro
-    depends_on:
-      - backend
-      - frontend
-    networks:
-      - app-network
-    restart: unless-stopped
+  # 在Coolify环境中不需要nginx-proxy，由Traefik处理反向代理
+  # nginx-proxy:
+  #   image: nginx:alpine
+  #   ports:
+  #     - "8080:80"
+  #     - "8443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./ssl:/etc/ssl/certs:ro
+  #   depends_on:
+  #     - backend
+  #     - frontend
+  #   networks:
+  #     - app-network
+  #   restart: unless-stopped
 
 networks:
   app-network:
