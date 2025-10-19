@@ -1,0 +1,21 @@
+{
+  "name": "https-fullstack-app",
+  "version": "1.0.0",
+  "description": "A full-stack JavaScript application with React frontend and Node.js backend",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": ["react", "node.js", "https", "fullstack"],
+  "author": "Your Name",
+  "license": "MIT"
+}
