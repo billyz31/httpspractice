@@ -7,7 +7,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "3100:3001"  # 修改为3100端口避免冲突
     environment:
       - NODE_ENV=production
       - PORT=3001
